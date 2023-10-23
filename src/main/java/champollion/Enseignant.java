@@ -2,12 +2,14 @@ package champollion;
 
 import java.sql.Array;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Enseignant extends Personne {
 
     private Map<UE, ServicePrevu> lesEnseignements = new HashMap<>();
+    private Set<Intervention> interventions = new HashSet<>();
     public static final  int HEURES_PREVUES_MINIMUM = 192;
     public Enseignant(String nom, String email) {
         super(nom, email);
@@ -76,4 +78,6 @@ public class Enseignant extends Personne {
     public boolean enSousService(){
         return this.heuresPrevues() < HEURES_PREVUES_MINIMUM;
     }
+
+
 }
