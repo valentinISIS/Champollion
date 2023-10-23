@@ -22,4 +22,16 @@ public class ServicePrevu {
     public int getVolumeTP() {
         return volumeTP;
     }
+
+    public void setVolumeCM(int volumeCM) {
+        this.volumeCM = volumeCM;
+    }
+
+    public void setVolumeTD(int volumeTD) {
+        this.volumeTD = volumeTD;
+    }
+
+    public void setVolumeTP(int volumeTP) {
+        this.volumeTP = volumeTP;
+    }
 }
