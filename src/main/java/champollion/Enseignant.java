@@ -8,6 +8,7 @@ import java.util.Set;
 public class Enseignant extends Personne {
 
     private Map<UE, ServicePrevu> lesEnseignements = new HashMap<>();
+    public static final  int HEURES_PREVUES_MINIMUM = 192;
     public Enseignant(String nom, String email) {
         super(nom, email);
     }
@@ -65,5 +66,14 @@ public class Enseignant extends Personne {
             return;
         }
         this.lesEnseignements.put(ue, new ServicePrevu(volumeCM, volumeTD, volumeTP));
+    }
+
+    /**
+     * Vérifie si un enseignant est en sous-service: il est en sous-service si son équivalant heure TD est en dessous
+     * de HEURES_PREVUES_MINIMUM
+     * @return un booléen répondant à la fonction
+     */
+    public boolean enSousService(){
+        return false;
     }
 }

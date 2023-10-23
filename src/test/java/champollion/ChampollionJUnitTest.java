@@ -37,5 +37,12 @@ public class ChampollionJUnitTest {
 
 		assertThrows(IllegalArgumentException.class, () -> untel.ajouteEnseignement(uml, -1, -1, -1), "On ne peut pas ajouter de valeur négative");
 	}
+
+	@Test
+	public void testEnseignantEnSousService() {
+		assertTrue(untel.enSousService(), "Une personne doit avoir plus de Enseignant.HEURES_PREVUES_MINIMUM pour ne plus être en sousService");
+		untel.ajouteEnseignement(uml, 0, Enseignant.HEURES_PREVUES_MINIMUM, 0);
+		assertFalse(untel.enSousService(), "Une personne doit avoir moins de Enseignant.HEURES_PREVUES_MINIMUM pour  être en sousService");
+	}
 	
 }
