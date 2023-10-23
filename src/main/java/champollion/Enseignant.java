@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Enseignant extends Personne {
 
-    private Map<UE, Integer[]> lesEnseignements = new HashMap<>();
+    private Map<UE, ServicePrevu> lesEnseignements = new HashMap<>();
     public Enseignant(String nom, String email) {
         super(nom, email);
     }
@@ -24,9 +24,9 @@ public class Enseignant extends Personne {
         Double heuresPrevues = 0.0;
         for (UE key:lesEnseignements.keySet()) {
             heuresPrevues = heuresPrevues +
-                            lesEnseignements.get(key)[0]*1.5 +
-                            lesEnseignements.get(key)[1] +
-                            lesEnseignements.get(key)[2]*0.75;
+                            lesEnseignements.get(key).getVolumeCM()*1.5 +
+                            lesEnseignements.get(key).getVolumeTD() +
+                            lesEnseignements.get(key).getVolumeTP()*0.75;
         }
         return heuresPrevues.intValue();
     }
@@ -41,9 +41,9 @@ public class Enseignant extends Personne {
      *
      */
     public int heuresPrevuesPourUE(UE ue) {
-        Double heuresPrevuesPourUE = lesEnseignements.get(ue)[0]*1.5 +
-                lesEnseignements.get(ue)[1] +
-                lesEnseignements.get(ue)[2]*0.75;
+        Double heuresPrevuesPourUE = lesEnseignements.get(ue).getVolumeCM()*1.5 +
+                                    lesEnseignements.get(ue).getVolumeTD() +
+                                    lesEnseignements.get(ue).getVolumeTP()*0.75;
         return heuresPrevuesPourUE.intValue();
     }
 
@@ -57,11 +57,13 @@ public class Enseignant extends Personne {
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
         if (this.lesEnseignements.containsKey(ue)){
-            Integer [] mesHeuresUe = lesEnseignements.get(ue);
-            this.lesEnseignements.put(ue, new Integer[]{volumeCM + mesHeuresUe[0], volumeTD + mesHeuresUe[1], volumeTP + mesHeuresUe[2]});
+            ServicePrevu servicePrevu = lesEnseignements.get(ue);
+            servicePrevu.addVolumeCM(volumeCM);
+            servicePrevu.addVolumeTD(volumeTD);
+            servicePrevu.addVolumeTP(volumeTP);
             return;
         }
-        this.lesEnseignements.put(ue, new Integer[]{volumeCM, volumeTD, volumeTP});
+        this.lesEnseignements.put(ue, new ServicePrevu(volumeCM, volumeTD, volumeTP));
     }
 
 }
