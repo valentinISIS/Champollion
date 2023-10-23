@@ -10,8 +10,8 @@ public class ChampollionJUnitTest {
 	@BeforeEach
 	public void setUp() {
 		untel = new Enseignant("untel", "untel@gmail.com");
-		uml = new UE("UML", 999, 999, 999);
-		java = new UE("Programmation en java", 999, 999, 999);
+		uml = new UE("UML");
+		java = new UE("Programmation en java");
 	}
 	
 

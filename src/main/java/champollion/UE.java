@@ -7,11 +7,8 @@ public class UE {
     private int heureTD;
     private int heureTP;
 
-    public UE(String myIntitule, int heureCM, int heureTD, int heureTP) {
+    public UE(String myIntitule) {
         this.myIntitule = myIntitule;
-        this.heureCM = heureCM;
-        this.heureTD = heureTD;
-        this.heureTP = heureTP;
     }
 
     public String getIntitule() {
