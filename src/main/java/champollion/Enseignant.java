@@ -41,8 +41,10 @@ public class Enseignant extends Personne {
      *
      */
     public int heuresPrevuesPourUE(UE ue) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        Double heuresPrevuesPourUE = lesEnseignements.get(ue)[0]*1.5 +
+                lesEnseignements.get(ue)[1] +
+                lesEnseignements.get(ue)[2]*0.75;
+        return heuresPrevuesPourUE.intValue();
     }
 
     /**
@@ -54,6 +56,11 @@ public class Enseignant extends Personne {
      * @param volumeTP le volume d'heures de TP
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
+        if (this.lesEnseignements.containsKey(ue)){
+            Integer [] mesHeuresUe = lesEnseignements.get(ue);
+            this.lesEnseignements.put(ue, new Integer[]{volumeCM + mesHeuresUe[0], volumeTD + mesHeuresUe[1], volumeTP + mesHeuresUe[2]});
+            return;
+        }
         this.lesEnseignements.put(ue, new Integer[]{volumeCM, volumeTD, volumeTP});
     }
 
