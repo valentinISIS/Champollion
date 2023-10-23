@@ -56,6 +56,7 @@ public class Enseignant extends Personne {
      * @param volumeTP le volume d'heures de TP
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
+        if (volumeCM < 0 || volumeTD < 0 || volumeTP < 0) throw new IllegalArgumentException("On ne peut pas ajouter de valeur négative");
         if (this.lesEnseignements.containsKey(ue)){
             ServicePrevu servicePrevu = lesEnseignements.get(ue);
             servicePrevu.addVolumeCM(volumeCM);
@@ -65,5 +66,4 @@ public class Enseignant extends Personne {
         }
         this.lesEnseignements.put(ue, new ServicePrevu(volumeCM, volumeTD, volumeTP));
     }
-
 }

@@ -33,8 +33,9 @@ public class ChampollionJUnitTest {
                 untel.ajouteEnseignement(uml, 0, 20, 0);
                 
 		assertEquals(10 + 20, untel.heuresPrevuesPourUE(uml),
-                         "L'enseignant doit maintenant avoir 30 heures prévues pour l'UE 'uml'");		
-		
+                         "L'enseignant doit maintenant avoir 30 heures prévues pour l'UE 'uml'");
+
+		assertThrows(IllegalArgumentException.class, () -> untel.ajouteEnseignement(uml, -1, -1, -1), "On ne peut pas ajouter de valeur négative");
 	}
 	
 }
