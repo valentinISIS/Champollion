@@ -1,5 +1,6 @@
 package champollion;
 
+import java.sql.Array;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -53,8 +54,7 @@ public class Enseignant extends Personne {
      * @param volumeTP le volume d'heures de TP
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.lesEnseignements.put(ue, new Integer[]{volumeCM, volumeTD, volumeTP});
     }
 
 }
