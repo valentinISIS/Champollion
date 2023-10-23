@@ -74,6 +74,6 @@ public class Enseignant extends Personne {
      * @return un booléen répondant à la fonction
      */
     public boolean enSousService(){
-        return false;
+        return this.heuresPrevues() < HEURES_PREVUES_MINIMUM;
     }
 }
