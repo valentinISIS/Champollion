@@ -1,9 +1,12 @@
 package champollion;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class Enseignant extends Personne {
 
-    // TODO : rajouter les autres méthodes présentes dans le diagramme UML
-
+    private Map<UE, Integer[]> lesEnseignements = new HashMap<>();
     public Enseignant(String nom, String email) {
         super(nom, email);
     }
@@ -17,8 +20,14 @@ public class Enseignant extends Personne {
      *
      */
     public int heuresPrevues() {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        Double heuresPrevues = 0.0;
+        for (UE key:lesEnseignements.keySet()) {
+            heuresPrevues = heuresPrevues +
+                            lesEnseignements.get(key)[0]*1.5 +
+                            lesEnseignements.get(key)[1] +
+                            lesEnseignements.get(key)[2]*0.75;
+        }
+        return heuresPrevues.intValue();
     }
 
     /**
