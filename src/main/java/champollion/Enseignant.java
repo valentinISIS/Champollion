@@ -79,5 +79,39 @@ public class Enseignant extends Personne {
         return this.heuresPrevues() < HEURES_PREVUES_MINIMUM;
     }
 
-
+    /**
+     * Calcule le reste d'heures à planifié d'une UE et d'un type d'intervention
+     * @param ue une unité d'enseignement
+     * @param type un type d'intervention
+     * @return une durée calculé
+     */
+    public int resteAPlanifier(UE ue, TypeIntervention type){
+        if (this.lesEnseignements.containsKey(ue)){
+            int heuresPlanifiées = 0;
+            switch (type){
+                case CM:
+                    for (Intervention inter: interventions) {
+                        if (inter.getTypeIntervention() == TypeIntervention.CM){
+                            heuresPlanifiées += inter.getDuree();
+                        }
+                    }
+                    return heuresPlanifiées;
+                case TD:
+                    for (Intervention inter: interventions) {
+                        if (inter.getTypeIntervention() == TypeIntervention.TD){
+                            heuresPlanifiées += inter.getDuree();
+                        }
+                    }
+                    return heuresPlanifiées;
+                case TP:
+                    for (Intervention inter: interventions) {
+                        if (inter.getTypeIntervention() == TypeIntervention.TP){
+                            heuresPlanifiées += inter.getDuree();
+                        }
+                    }
+                    return heuresPlanifiées;
+            }
+        }
+        return 0;
+    }
 }
