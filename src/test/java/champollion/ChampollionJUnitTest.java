@@ -1,17 +1,24 @@
 package champollion;
 
 import org.junit.jupiter.api.*;
+
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ChampollionJUnitTest {
 	Enseignant untel;
 	UE uml, java;
+	Intervention inter_uml_cm;
+	Salle uneSalle;
 		
 	@BeforeEach
 	public void setUp() {
 		untel = new Enseignant("untel", "untel@gmail.com");
 		uml = new UE("UML");
 		java = new UE("Programmation en java");
+		uneSalle = new Salle("uneSalle", 999);
+		inter_uml_cm = new Intervention(new Date(), 12, 8, untel, uml, TypeIntervention.CM, uneSalle);
 	}
 	
 
@@ -48,5 +55,14 @@ public class ChampollionJUnitTest {
 	@Test
 	public void testResteAPlanifier() {
 		assertEquals(untel.resteAPlanifier(uml, TypeIntervention.CM), 0, "Le reste à planifié doit être égal à 0 pour un enseignement non planifié d'un enseignant");
+		untel.ajouteEnseignement(uml, 12, 0, 0);
+		assertEquals(untel.resteAPlanifier(uml, TypeIntervention.CM), 12, "Il doit rester les heures à planifié ajouté précédement");
+		untel.ajouteIntervention(inter_uml_cm);
+		assertEquals(untel.resteAPlanifier(uml, TypeIntervention.CM), 0, "Le calcul des heures déjà planifié n'est pas bon");
+	}
+
+	@Test
+	public void testAjouteIntervention(){
+		assertThrows(IllegalArgumentException.class, () -> untel.ajouteIntervention(inter_uml_cm), "Ajout invalide");
 	}
 }

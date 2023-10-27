@@ -96,21 +96,21 @@ public class Enseignant extends Personne {
                             heuresPlanifiées += inter.getDuree();
                         }
                     }
-                    return heuresPlanifiées;
+                    return this.lesEnseignements.get(ue).getVolumeCM() - heuresPlanifiées;
                 case TD:
                     for (Intervention inter: interventions) {
                         if (inter.getTypeIntervention() == TypeIntervention.TD){
                             heuresPlanifiées += inter.getDuree();
                         }
                     }
-                    return heuresPlanifiées;
+                    return this.lesEnseignements.get(ue).getVolumeTD() - heuresPlanifiées;
                 case TP:
                     for (Intervention inter: interventions) {
                         if (inter.getTypeIntervention() == TypeIntervention.TP){
                             heuresPlanifiées += inter.getDuree();
                         }
                     }
-                    return heuresPlanifiées;
+                    return this.lesEnseignements.get(ue).getVolumeTP() - heuresPlanifiées;
             }
         }
         return 0;

@@ -12,10 +12,9 @@ public class Intervention {
     private TypeIntervention typeIntervention;
     private Salle salle;
 
-    public Intervention(Date debut, int duree, boolean annulee, int heureDebut, Enseignant enseignant, UE ue, TypeIntervention typeIntervention, Salle salle) {
+    public Intervention(Date debut, int duree, int heureDebut, Enseignant enseignant, UE ue, TypeIntervention typeIntervention, Salle salle) {
         this.debut = debut;
         this.duree = duree;
-        this.annulee = annulee;
         this.heureDebut = heureDebut;
         this.enseignant = enseignant;
         this.ue = ue;
