@@ -44,5 +44,9 @@ public class ChampollionJUnitTest {
 		untel.ajouteEnseignement(uml, 0, Enseignant.HEURES_PREVUES_MINIMUM, 0);
 		assertFalse(untel.enSousService(), "Une personne doit avoir moins de Enseignant.HEURES_PREVUES_MINIMUM pour  être en sousService");
 	}
-	
+
+	@Test
+	public void testResteAPlanifier() {
+		assertEquals(untel.resteAPlanifier(uml, TypeIntervention.CM), 0, "Le reste à planifié doit être égal à 0 pour un enseignement non planifié d'un enseignant");
+	}
 }
