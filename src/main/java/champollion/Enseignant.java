@@ -1,5 +1,6 @@
 package champollion;
 
+import javax.naming.directory.InvalidAttributesException;
 import java.sql.Array;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -113,5 +114,14 @@ public class Enseignant extends Personne {
             }
         }
         return 0;
+    }
+
+    /**
+     * ajoute une intervention pour un enseignant
+     * @param inter une intervention
+     */
+    public void ajouteIntervention(Intervention inter){
+        if (inter.getDuree() > resteAPlanifier(inter.getUe(), inter.getTypeIntervention())) throw new IllegalArgumentException("On ne peut pas dépasser le nombre d'heures prévues");
+        this.interventions.add(inter);
     }
 }

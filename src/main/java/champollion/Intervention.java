@@ -47,6 +47,10 @@ public class Intervention {
         return typeIntervention;
     }
 
+    public UE getUe() {
+        return ue;
+    }
+
     public void setSalle(Salle salle) {
         this.salle = salle;
     }
